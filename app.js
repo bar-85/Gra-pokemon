@@ -5,90 +5,90 @@ function getRandomValue(min, max) {
 const app = Vue.createApp({
 	data() {
 		return {
-			pikachuHealth: 100,
-			gastlyHealth: 100,
-			currentRound: 0,
-			winner: null,
-			logTable: [],
+			pikachuHealthValueValue: 100,
+			gastlyHealthValueValue: 100,
+			currentRoundValueValue: 0,
+			winnerbattleBattle: null,
+			logTableMessageMessage: [],
 		}
 	},
 	computed: {
 		gastlyStyles() {
-			if (this.gastlyHealth < 0) {
+			if (this.gastlyHealthValue < 0) {
 				return { width: '0%' }
 			}
-			return { width: this.gastlyHealth + '%' }
+			return { width: this.gastlyHealthValue + '%' }
 		},
 		pikachuStyles() {
-			if (this.pikachuHealth < 0) {
+			if (this.pikachuHealthValue < 0) {
 				return { width: '0%' }
 			}
-			return { width: this.pikachuHealth + '%' }
+			return { width: this.pikachuHealthValue + '%' }
 		},
 		disabledGame() {
-			return this.currentRound % 3 !== 0
+			return this.currentRoundValue % 3 !== 0
 		},
 	},
 	watch: {
-		pikachuHealth(value) {
-			if (value <= 0 && this.gastlyHealth <= 0) {
-				this.winner = 'draw'
+		pikachuHealthValue(value) {
+			if (value <= 0 && this.gastlyHealthValue <= 0) {
+				this.winnerbattle = 'draw'
 			} else if (value <= 0) {
-				this.winner = 'gastly'
+				this.winnerbattle = 'gastly'
 			}
 		},
-		gastlyHealth(value) {
-			if (value <= 0 && this.pikachuHealth <= 0) {
-				this.winner = 'draw'
+		gastlyHealthValue(value) {
+			if (value <= 0 && this.pikachuHealthValue <= 0) {
+				this.winnerbattle = 'draw'
 			} else if (value <= 0) {
-				this.winner = 'pikachu'
+				this.winnerbattle = 'pikachu'
 			}
 		},
 	},
 
 	methods: {
 		attackGastly() {
-			this.currentRound++
+			this.currentRoundValue++
 			const attackValue = getRandomValue(1, 4)
-			this.gastlyHealth -= attackValue
+			this.gastlyHealthValue -= attackValue
 			this.addLog('pikachu', 'attack', attackValue)
 			this.attackPikachu()
 		},
 		attackPikachu() {
 			const attackValue = getRandomValue(4, 8)
-			this.pikachuHealth -= attackValue
+			this.pikachuHealthValue -= attackValue
 			this.addLog('gastly', 'pikachu', attackValue)
 		},
 		specialAttackGastly() {
-			this.currentRound++
+			this.currentRoundValue++
 			const attackValue = getRandomValue(3, 10)
-			this.gastlyHealth -= attackValue
+			this.gastlyHealthValue -= attackValue
 			this.addLog('pikachu', 'attack', attackValue)
 			this.attackPikachu()
 		},
 		healPikachu() {
-			this.currentRound++
+			this.currentRoundValue++
 			const healValue = getRandomValue(4, 10)
-			if (this.pikachuHealth + healValue > 100) {
-				this.pikachuHealth = 100
+			if (this.pikachuHealthValue + healValue > 100) {
+				this.pikachuHealthValue = 100
 			} else {
-				this.pikachuHealth += healValue
+				this.pikachuHealthValue += healValue
 			}
 			this.addLog('pikachu', 'heal', healValue)
 			this.attackPikachu()
 		},
 		newGame() {
-			this.pikachuHealth = 100
-			this.gastlyHealth = 100
-			this.winner = null
-			this.currentRound = 0
-			this.logTable = []
+			this.pikachuHealthValue = 100
+			this.gastlyHealthValue = 100
+			this.winnerbattle = null
+			this.currentRoundValue = 0
+			this.logTableMessage = []
 		},
 		surrender() {
-			this.winner = 'gastly'
+			this.winnerbattle = 'gastly'
 		},
 		addLog(who, what, value) {
-			this.logTable.unshift({
+			this.logTableMessage.unshift({
 				actionBy: who,
 				actionType: what,
 				actionValue: value,

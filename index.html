@@ -29,11 +29,11 @@
         <div class="healthbar__value" :style="pikachuStyles"></div>
       </div>
     </section>
-    <section class="container" v-if="winner">
+    <section class="container" v-if="winnerbattle">
       <h2>GAME OVER!! </h2>
-      <h3 v-if="winner === 'gastly'">Przegrałeś!☠️</h3>
-      <h3 v-if="winner === 'pikachu' ">Wygrałeś!🎉</h3>
-      <h3 v-if="winner === 'draw'">Remis!🤝</h3>
+      <h3 v-if="winnerbattle === 'gastly'">Przegrałeś!☠️</h3>
+      <h3 v-if="winnerbattle === 'pikachu' ">Wygrałeś!🎉</h3>
+      <h3 v-if="winnerbattle === 'draw'">Remis!🤝</h3>
       <button @click="newGame">Nowa gra</button>
     </section>
     <section id="controls" v-else>
@@ -45,8 +45,8 @@
     <section id="log" class="container">
       <h2>zapis bitwy:</h2>
       <ul>
-        <li v-for="log in logTable">
-          <span :class="{'log--pikachu': log.actionBy === 'pikachu', 'log--gastly': log.actionBy === 'gastly'}">{{
+        <li v-for="log in logTableMessage">
+          <span :class="">{{
             log.actionBy === 'pikachu' ? 'Pikachu' : 'Gastly'}}</span>
           <span v-if="log.actionType === 'heal'"> leczy się za <span class="log--heal">{{log.actionValue}} </span>
             punktów</span>
