@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gastly vs Pikachu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Gastly vs Pikachu</h1>
+  </header>
+  <div id="game">
+    <section id="gastly" class="container">
+      <img class="pokemon2" src="image/d3eeel5-9f7eec47-4462-4638-8c78-5e634346d9d4.gif" alt="">
+      <h2>Gastly</h2>
+      <div class="healthbar">
+        <div class="healthbar__value" :style="gastlyStyles"></div>
+      </div>
+    </section>
+    <section id="pikachu" class="container">
+      <img class="pikachu" src="image/da2xxw5-bd5f33a7-19c8-4a97-9ab7-79be9c1bf6e3.gif" alt="">
+      <h2>Pikachu</h2>
+      <div class="healthbar">
+        <div class="healthbar__value" :style="pikachuStyles"></div>
+      </div>
+    </section>
+    <section class="container" v-if="winner">
+      <h2>GAME OVER!! </h2>
+      <h3 v-if="winner === 'gastly'">Przegrałeś!☠️</h3>
+      <h3 v-if="winner === 'pikachu' ">Wygrałeś!🎉</h3>
+      <h3 v-if="winner === 'draw'">Remis!🤝</h3>
+      <button @click="newGame">Nowa gra</button>
+    </section>
+    <section id="controls" v-else>
+      <button @click="attackGastly">ATAK 🗡</button>
+      <button :disabled="disabledGame" @click="specialAttackGastly">ATAK SPECJALNY⚔️</button>
+      <button @click="healPikachu">LECZENIE💊</button>
+      <button @click="surrender">PODDAJ SIĘ🆘</button>
+    </section>
+    <section id="log" class="container">
+      <h2>zapis bitwy:</h2>
+      <ul>
+        <li v-for="log in logTable">
+          <span :class="{'log--pikachu': log.actionBy === 'pikachu', 'log--gastly': log.actionBy === 'gastly'}">{{
+            log.actionBy === 'pikachu' ? 'Pikachu' : 'Gastly'}}</span>
+          <span v-if="log.actionType === 'heal'"> leczy się za <span class="log--heal">{{log.actionValue}} </span>
+            punktów</span>
+          <span v-else> atakuje i zadaje <span class="log--damage">{{log.actionValue}}</span> punktów obrażeń</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</body>
+
+</html>
