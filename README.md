@@ -36,4 +36,6 @@
 -przegrana
 # ![Screenshot_7](https://user-images.githubusercontent.com/105555319/175427338-c185f49a-3f37-4ec4-9536-bb768362ab27.png)
 
+### Statystyki:
+# ![Screenshot_8](https://user-images.githubusercontent.com/105555319/175427753-d6c793e4-e9dc-4537-8292-2c51ca8efe36.png)
 
