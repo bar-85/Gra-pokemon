@@ -43,7 +43,7 @@
       <button @click="surrender">PODDAJ SIĘ🆘</button>
     </section>
     <section id="log" class="container">
-      <h2>zapis bitwy:</h2>
+      <h2>ZAPIS BITWY:</h2>
       <ul>
         <li v-for="log in logTableMessage">
           <span :class="{'log--pikachu': log.actionBy === 'pikachu', 'log--gastly': log.actionBy === 'gastly'}">{{
