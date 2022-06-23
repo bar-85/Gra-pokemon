@@ -5,11 +5,11 @@ function getRandomValue(min, max) {
 const app = Vue.createApp({
 	data() {
 		return {
-			pikachuHealthValueValue: 100,
-			gastlyHealthValueValue: 100,
-			currentRoundValueValue: 0,
-			winnerbattleBattle: null,
-			logTableMessageMessage: [],
+			pikachuHealthValue: 100,
+			gastlyHealthValue: 100,
+			currentRoundValue: 0,
+			winnerbattle: null,
+			logTableMessage: [],
 		}
 	},
 	computed: {
