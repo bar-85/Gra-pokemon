@@ -4,7 +4,7 @@
 # ![Screenshot_12](https://user-images.githubusercontent.com/105555319/175427588-a8c6b967-5948-4649-9721-3dfe91a41064.png)
 
 
-## Grę można zobaczyć pod adresem: https://bar-85.github.io/gra-pokemon/
+## Grę można zobaczyć pod adresem: https://pokemon-gra.netlify.app/
 
 ## Technologie
 * HTML
